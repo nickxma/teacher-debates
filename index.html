@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where Meditation Teachers Disagree</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --border: #e4e2dc;
+  --text: #1a1a18;
+  --text-muted: #6b6966;
+  --accent: #2d5a27;
+  --accent-light: #eef3ec;
+  --c1: #2d5a27;
+  --c2: #1a4a72;
+  --c3: #7a3200;
+  --c4: #4a1f6b;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  text-align: center;
+  padding: 52px 24px 20px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 4px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(1.375rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.tab-strip-wrap { max-width: 660px; margin: 28px auto 0; padding: 0 20px; }
+.tab-strip { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+
+.tab-btn {
+  padding: 9px 18px; border-radius: 20px; border: 1.5px solid var(--border);
+  background: var(--surface); color: var(--text-muted); font-size: 0.875rem;
+  font-weight: 500; cursor: pointer; white-space: nowrap; transition: all 0.15s; font-family: inherit;
+}
+.tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+.tab-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 28px 16px 52px; }
+
+.debate { display: none; width: 100%; max-width: 640px; animation: fadeIn 0.25s ease; }
+.debate.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+.debate-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06); padding: 40px 40px 36px;
+}
+@media (max-width: 520px) { .debate-card { padding: 28px 22px 24px; } }
+
+.debate-num {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-light); padding: 4px 12px; border-radius: 20px;
+  display: inline-block; margin-bottom: 18px;
+}
+.debate-q { font-size: clamp(1.2rem, 3vw, 1.55rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.025em; margin-bottom: 12px; }
+.debate-framing { font-size: 0.9375rem; line-height: 1.65; color: var(--text-muted); margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+.camps-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+.camps { display: flex; flex-direction: column; gap: 14px; }
+
+.camp { border-radius: 12px; background: var(--bg); border-left: 3px solid; overflow: hidden; }
+.camp:nth-child(1) { border-color: var(--c1); }
+.camp:nth-child(2) { border-color: var(--c2); }
+.camp:nth-child(3) { border-color: var(--c3); }
+.camp:nth-child(4) { border-color: var(--c4); }
+
+.camp-body { padding: 16px 18px 12px; }
+.camp-name { font-size: 0.775rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
+.camp:nth-child(1) .camp-name { color: var(--c1); }
+.camp:nth-child(2) .camp-name { color: var(--c2); }
+.camp:nth-child(3) .camp-name { color: var(--c3); }
+.camp:nth-child(4) .camp-name { color: var(--c4); }
+.camp-desc { font-size: 0.9rem; line-height: 1.62; color: var(--text); }
+
+.camp-teachers { padding: 10px 18px 14px; display: flex; flex-wrap: wrap; gap: 6px; border-top: 1px solid var(--border); }
+
+.teacher-chip {
+  font-size: 0.75rem; font-weight: 500; padding: 3px 10px; border-radius: 12px; border: 1px solid;
+  cursor: pointer; transition: all 0.15s; user-select: none;
+}
+.teacher-chip:hover { transform: scale(1.04); box-shadow: 0 1px 6px rgba(0,0,0,0.1); }
+
+.camp:nth-child(1) .teacher-chip { border-color: #b8d4b4; color: var(--c1); background: #f0f7ee; }
+.camp:nth-child(2) .teacher-chip { border-color: #b3c8e0; color: var(--c2); background: #eef4fb; }
+.camp:nth-child(3) .teacher-chip { border-color: #d4baa8; color: var(--c3); background: #faf3ee; }
+.camp:nth-child(4) .teacher-chip { border-color: #c8b8d8; color: var(--c4); background: #f5f0fa; }
+
+.camp:nth-child(1) .teacher-chip:hover { background: #e2eede; }
+.camp:nth-child(2) .teacher-chip:hover { background: #deeaf5; }
+.camp:nth-child(3) .teacher-chip:hover { background: #f0e6db; }
+.camp:nth-child(4) .teacher-chip:hover { background: #ebe3f3; }
+
+.absence-note { font-size: 0.8rem; font-style: italic; color: var(--text-muted); padding: 8px 18px 14px; border-top: 1px solid var(--border); }
+
+.corpus-note {
+  width: 100%; max-width: 640px; margin-top: 16px; background: #fef9ec; border: 1px solid #e8ddb3;
+  border-radius: 10px; padding: 14px 18px; font-size: 0.8rem; color: #5a4e00; line-height: 1.5;
+}
+
+.bottom-nav { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 640px; margin-top: 20px; }
+.nav-btn {
+  padding: 11px 24px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: border-color 0.15s, color 0.15s; font-family: inherit;
+}
+.nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.nav-btn:disabled { opacity: 0.3; cursor: default; }
+.nav-counter { font-size: 0.8rem; color: var(--text-muted); }
+
+/* Modal */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  z-index: 1000; align-items: flex-end; justify-content: center;
+  animation: overlayIn 0.2s ease;
+}
+.modal-overlay.open { display: flex; }
+
+@keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-sheet {
+  background: var(--surface); border-radius: 20px 20px 0 0; width: 100%; max-width: 640px;
+  max-height: 80vh; overflow-y: auto; padding: 32px 32px 40px; position: relative;
+  animation: sheetUp 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@media (min-width: 640px) {
+  .modal-overlay { align-items: center; }
+  .modal-sheet { border-radius: 18px; max-height: 85vh; }
+}
+@media (max-width: 520px) { .modal-sheet { padding: 24px 20px 32px; } }
+
+.modal-close {
+  position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%;
+  border: none; background: var(--bg); cursor: pointer; font-size: 1.1rem; color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+}
+.modal-close:hover { background: var(--border); }
+
+.modal-tradition { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+.modal-name { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 20px; }
+.modal-section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; margin-top: 20px; }
+.modal-debate-q { font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.modal-quote { font-size: 0.95rem; line-height: 1.7; color: var(--text); border-left: 3px solid var(--accent); padding: 12px 16px; margin: 8px 0 0; background: var(--accent-light); border-radius: 0 8px 8px 0; font-style: italic; }
+.modal-synthesis { font-size: 0.9375rem; line-height: 1.65; color: var(--text); }
+.note-link { color: var(--accent); cursor: pointer; font-weight: 500; text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 2px; }
+.note-link:hover { text-decoration-color: var(--accent); }
+
+/* Footer */
+footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 20px; font-size: 0.85rem; margin-bottom: 10px; }
+.footer-label { color: var(--text-muted); }
+footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
+footer a:hover { text-decoration: underline; }
+.footer-attr { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; max-width: 520px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">26 teachers · transcript corpus</div>
+  <h1>Where Meditation Teachers Disagree</h1>
+  <p class="subtitle">Based on a corpus of transcripts from 26 contemplative teachers. These are the questions where they diverge most. Tap any name to see the evidence.</p>
+</header>
+
+<div class="tab-strip-wrap">
+  <div class="tab-strip" id="tabs">
+    <button class="tab-btn active" onclick="show(0)">Does practice accumulate?</button>
+    <button class="tab-btn" onclick="show(1)">Can you cherry-pick?</button>
+    <button class="tab-btn" onclick="show(2)">Already awakened?</button>
+    <button class="tab-btn" onclick="show(3)">Is it always safe?</button>
+    <button class="tab-btn" onclick="show(4)">What is suffering for?</button>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- D0: Dosage -->
+  <div class="debate active" id="d0">
+    <div class="debate-card">
+      <div class="debate-num">Debate 1 of 5</div>
+      <div class="debate-q">Does more practice lead to more benefit?</div>
+      <div class="debate-framing">Every app, retreat center, and teacher incentive assumes the answer is yes. In the available transcripts, the teachers are roughly split: half say dosage matters, the other half say the premise is wrong.</div>
+      <div class="camps-label">Where the teachers divide</div>
+      <div class="camps">
+        <div class="camp"><div class="camp-body"><div class="camp-name">Yes — practice accumulates</div><div class="camp-desc">Real gains come from sustained effort. The skill deepens over time. Someone with decades of daily practice has a genuine advantage.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Charlotte Joko Beck',0)">Charlotte Joko Beck</span><span class="teacher-chip" onclick="modal('Henry Shukman',0)">Henry Shukman</span><span class="teacher-chip" onclick="modal('Joseph Goldstein',0)">Joseph Goldstein</span><span class="teacher-chip" onclick="modal('Donald Robertson',0)">Donald Robertson</span><span class="teacher-chip" onclick="modal('Amishi Jha',0)">Amishi Jha</span><span class="teacher-chip" onclick="modal('Rick Hanson',0)">Rick Hanson</span><span class="teacher-chip" onclick="modal('Arthur Brooks',0)">Arthur Brooks</span><span class="teacher-chip" onclick="modal('Shinzen Young',0)">Shinzen Young</span><span class="teacher-chip" onclick="modal('Kieran Setiya',0)">Kieran Setiya</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">No — you can't improve what's already complete</div><div class="camp-desc">The thing you're looking for was never absent. A long-term practitioner has no fundamental advantage over someone encountering this for the first time.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Kodo Sawaki',0)">Kodo Sawaki</span><span class="teacher-chip" onclick="modal('Adyashanti',0)">Adyashanti</span><span class="teacher-chip" onclick="modal('Gangaji',0)">Gangaji</span><span class="teacher-chip" onclick="modal('Joan Tollifson',0)">Joan Tollifson</span><span class="teacher-chip" onclick="modal('Oliver Burkeman',0)">Oliver Burkeman</span><span class="teacher-chip" onclick="modal('Richard Lang',0)">Richard Lang</span><span class="teacher-chip" onclick="modal('John Astin',0)">John Astin</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">The relationship is non-linear</div><div class="camp-desc">Too little and nothing shifts. Too much and it can become counterproductive. Individual variation matters more than total hours.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Willoughby Britton',0)">Willoughby Britton</span><span class="teacher-chip" onclick="modal('Loch Kelly',0)">Loch Kelly</span><span class="teacher-chip" onclick="modal('James Low',0)">James Low</span><span class="teacher-chip" onclick="modal('Stephan Bodian',0)">Stephan Bodian</span><span class="teacher-chip" onclick="modal('Christopher Titmuss',0)">Christopher Titmuss</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">There's no path — and no one to walk it</div><div class="camp-desc">The dosage question assumes a project and a practitioner. Both are exactly what practice is supposed to undo.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Jim Newman',0)">Jim Newman</span><span class="teacher-chip" onclick="modal('Robert Sapolsky',0)">Robert Sapolsky</span><span class="teacher-chip" onclick="modal('Peter Fenner',0)">Peter Fenner</span></div></div>
+      </div>
+    </div>
+    <div class="corpus-note">In the available transcripts, no explicit dosage model from <span class="note-link" onclick="modal('Sam Harris',0)">Sam Harris</span> appears. He is not clearly in any of these camps — which is itself a data point. Tap his name to see the evidence.</div>
+  </div>
+
+  <!-- D1: Cherry-pick -->
+  <div class="debate" id="d1">
+    <div class="debate-card">
+      <div class="debate-num">Debate 2 of 5</div>
+      <div class="debate-q">Can you dissolve the neurotic self without dissolving the motivated self?</div>
+      <div class="debate-framing">Mindfulness promises to reduce anxiety, reactivity, and ego-driven suffering. But the anxious self and the driven self may run on the same machinery. If you weaken one, do you weaken both? This is the question the corpus never resolves — and mostly avoids.</div>
+      <div class="camps-label">Where the teachers divide</div>
+      <div class="camps">
+        <div class="camp"><div class="camp-body"><div class="camp-name">Yes — acceptance enables clearer action</div><div class="camp-desc">When reactivity dissolves, what remains is more effective, not less. Genuine motivation doesn't require anxiety to function. The claim: acceptance and ambition are compatible.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Diane Musho Hamilton',1)">Diane Musho Hamilton</span><span class="teacher-chip" onclick="modal('Rick Hanson',1)">Rick Hanson</span><span class="teacher-chip" onclick="modal('Arthur Brooks',1)">Arthur Brooks</span><span class="teacher-chip" onclick="modal('Loch Kelly',1)">Loch Kelly</span><span class="teacher-chip" onclick="modal('Stephan Bodian',1)">Stephan Bodian</span><span class="teacher-chip" onclick="modal('Shinzen Young',1)">Shinzen Young</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">No — you can't cherry-pick</div><div class="camp-desc">The capacity for sustained effort, deferred gratification, and competitive ambition are all ego-driven. There is no surgical option for dissolving only the parts you don't like.</div></div><div class="absence-note">No teacher in the corpus directly states this position — which is the most significant finding. The argument that you can't cherry-pick is structurally present but never named.</div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">Both selves dissolve — something else takes over</div><div class="camp-desc">At sufficient depth, the neurotic/motivated distinction collapses. The self that was trying to cherry-pick is the very thing that dissolves. What replaces it is action without a self behind it.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Jim Newman',1)">Jim Newman</span><span class="teacher-chip" onclick="modal('John Astin',1)">John Astin</span><span class="teacher-chip" onclick="modal('Gangaji',1)">Gangaji</span><span class="teacher-chip" onclick="modal('Joan Tollifson',1)">Joan Tollifson</span><span class="teacher-chip" onclick="modal('Adyashanti',1)">Adyashanti</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">Unresolved — no mechanism given</div><div class="camp-desc">The question is acknowledged but left open. "Acceptance doesn't mean passivity" is asserted. What takes over for self-interested goals is never explained.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Sam Harris',1)">Sam Harris</span><span class="teacher-chip" onclick="modal('Peter Fenner',1)">Peter Fenner</span><span class="teacher-chip" onclick="modal('Robert Sapolsky',1)">Robert Sapolsky</span></div></div>
+      </div>
+    </div>
+    <div class="corpus-note">This is the structural gap in the corpus. Across ~760 hours of content, no teacher offers a mechanism for what motivates self-interested action after ego dissolution. The question is either avoided, asserted away, or acknowledged and left open.</div>
+  </div>
+
+  <!-- D2: Awakened -->
+  <div class="debate" id="d2">
+    <div class="debate-card">
+      <div class="debate-num">Debate 3 of 5</div>
+      <div class="debate-q">Are you already awakened right now?</div>
+      <div class="debate-framing">One of the oldest debates in contemplative practice. In the available transcripts, teachers land on every side — including one who calls the "you're already there" teaching dangerous, and another whose own experience directly contradicts the "always already" position.</div>
+      <div class="camps-label">Where the teachers divide</div>
+      <div class="camps">
+        <div class="camp"><div class="camp-body"><div class="camp-name">Yes — right now, no practice needed</div><div class="camp-desc">Awareness is already present, complete, undamaged. Recognition is available immediately. The project of gradual practice may be misdirected effort toward something you already are.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Stephan Bodian',2)">Stephan Bodian</span><span class="teacher-chip" onclick="modal('Peter Fenner',2)">Peter Fenner</span><span class="teacher-chip" onclick="modal('Richard Lang',2)">Richard Lang</span><span class="teacher-chip" onclick="modal('John Astin',2)">John Astin</span><span class="teacher-chip" onclick="modal('Gangaji',2)">Gangaji</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">Awareness is always present, but a real shift is still needed</div><div class="camp-desc">The underlying nature is always there, but recognition requires stabilization. There's a difference between a glimpse and a stable change.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Sam Harris',2)">Sam Harris</span><span class="teacher-chip" onclick="modal('Adyashanti',2)">Adyashanti</span><span class="teacher-chip" onclick="modal('James Low',2)">James Low</span><span class="teacher-chip" onclick="modal('Loch Kelly',2)">Loch Kelly</span><span class="teacher-chip" onclick="modal('Shinzen Young',2)">Shinzen Young</span><span class="teacher-chip" onclick="modal('Rick Hanson',2)">Rick Hanson</span><span class="teacher-chip" onclick="modal('Joseph Goldstein',2)">Joseph Goldstein</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">No — there's a real, irreversible shift with a clear before and after</div><div class="camp-desc">Awakening is a genuine change, not a reframing. Saying "you're already there" may be technically true but is functionally misleading and can produce complacency.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Henry Shukman',2)">Henry Shukman</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">The claim is problematic</div><div class="camp-desc">Telling practitioners they're already enlightened produces nothing transformative. It tends to generate spiritual bypassing and can cause measurable harm.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Christopher Titmuss',2)">Christopher Titmuss</span><span class="teacher-chip" onclick="modal('Willoughby Britton',2)">Willoughby Britton</span></div></div>
+      </div>
+    </div>
+    <div class="corpus-note">In his available transcripts, <span class="note-link" onclick="modal('Henry Shukman',2)">Shukman</span> describes a cessation experience as evidence that awakening is a real, irreversible shift — which would undermine both the "always already there" camp and the "nowhere to get" camp.</div>
+  </div>
+
+  <!-- D3: Safety -->
+  <div class="debate" id="d3">
+    <div class="debate-card">
+      <div class="debate-num">Debate 4 of 5</div>
+      <div class="debate-q">Is meditation always safe?</div>
+      <div class="debate-framing">The wellness industry treats this as obvious. Among these teachers, the split is stark: a handful acknowledge adverse effects explicitly in their transcripts; the majority do not address it at all in the available content.</div>
+      <div class="camps-label">Where the teachers divide</div>
+      <div class="camps">
+        <div class="camp"><div class="camp-body"><div class="camp-name">Adverse effects are real and documented</div><div class="camp-desc">The empirical evidence for adverse effects is robust. Individual variation in response to different techniques is real, consistent, and underdisclosed.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Willoughby Britton',3)">Willoughby Britton</span><span class="teacher-chip" onclick="modal('Henry Shukman',3)">Henry Shukman</span><span class="teacher-chip" onclick="modal('Diane Musho Hamilton',3)">Diane Musho Hamilton</span><span class="teacher-chip" onclick="modal('Loch Kelly',3)">Loch Kelly</span><span class="teacher-chip" onclick="modal('Stephan Bodian',3)">Stephan Bodian</span><span class="teacher-chip" onclick="modal('Gangaji',3)">Gangaji</span><span class="teacher-chip" onclick="modal('Rick Hanson',3)">Rick Hanson</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">Individual variation matters — one size doesn't fit all</div><div class="camp-desc">Different techniques work differently for different people. What's reliable for one practitioner can be actively unhelpful for another.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Willoughby Britton',3)">Willoughby Britton</span><span class="teacher-chip" onclick="modal('Shinzen Young',3)">Shinzen Young</span><span class="teacher-chip" onclick="modal('Amishi Jha',3)">Amishi Jha</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">Not addressed</div><div class="camp-desc">These teachers do not discuss adverse effects in their Waking Up content. This is not a neutral position — it shapes what practitioners expect.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Sam Harris',3)">Sam Harris</span><span class="teacher-chip" onclick="modal('Kodo Sawaki',3)">Kodo Sawaki</span><span class="teacher-chip" onclick="modal('James Low',3)">James Low</span><span class="teacher-chip" onclick="modal('Charlotte Joko Beck',3)">Charlotte Joko Beck</span><span class="teacher-chip" onclick="modal('Joan Tollifson',3)">Joan Tollifson</span><span class="teacher-chip" onclick="modal('Peter Fenner',3)">Peter Fenner</span><span class="teacher-chip" onclick="modal('Joseph Goldstein',3)">Joseph Goldstein</span><span class="teacher-chip" onclick="modal('Christopher Titmuss',3)">Christopher Titmuss</span><span class="teacher-chip" onclick="modal('John Astin',3)">John Astin</span><span class="teacher-chip" onclick="modal('Jim Newman',3)">Jim Newman</span><span class="teacher-chip" onclick="modal('Donald Robertson',3)">Donald Robertson</span><span class="teacher-chip" onclick="modal('Robert Sapolsky',3)">Robert Sapolsky</span><span class="teacher-chip" onclick="modal('Oliver Burkeman',3)">Oliver Burkeman</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">Safety depends on guidance</div><div class="camp-desc">Skilled individual guidance produces very different outcomes than self-directed app-based practice. The gap is almost never acknowledged.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Stephan Bodian',3)">Stephan Bodian</span><span class="teacher-chip" onclick="modal('Henry Shukman',3)">Henry Shukman</span><span class="teacher-chip" onclick="modal('Willoughby Britton',3)">Willoughby Britton</span></div></div>
+      </div>
+    </div>
+    <div class="corpus-note">In the available transcripts, <span class="note-link" onclick="modal('Willoughby Britton',3)">Britton</span> is the primary — and often only — voice on what can go wrong. The asymmetry between coverage of benefits vs. harms across the corpus is notable.</div>
+  </div>
+
+  <!-- D4: Suffering -->
+  <div class="debate" id="d4">
+    <div class="debate-card">
+      <div class="debate-num">Debate 5 of 5</div>
+      <div class="debate-q">What is suffering actually for?</div>
+      <div class="debate-framing">The corpus contains both therapeutic teachers (reduce suffering) and contemplative teachers (suffering is the teacher). These frameworks are in direct tension. Both claim to be what "mindfulness" is — but they point in opposite directions.</div>
+      <div class="camps-label">Where the teachers divide</div>
+      <div class="camps">
+        <div class="camp"><div class="camp-body"><div class="camp-name">Suffering is a necessary teacher — move toward it</div><div class="camp-desc">Suffering wakes you up. The instinct to avoid discomfort keeps you stuck. Moving toward it, not away, is how practice deepens.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Adyashanti',4)">Adyashanti</span><span class="teacher-chip" onclick="modal('Charlotte Joko Beck',4)">Charlotte Joko Beck</span><span class="teacher-chip" onclick="modal('Henry Shukman',4)">Henry Shukman</span><span class="teacher-chip" onclick="modal('Diane Musho Hamilton',4)">Diane Musho Hamilton</span><span class="teacher-chip" onclick="modal('Rick Hanson',4)">Rick Hanson</span><span class="teacher-chip" onclick="modal('Donald Robertson',4)">Donald Robertson</span><span class="teacher-chip" onclick="modal('Kieran Setiya',4)">Kieran Setiya</span><span class="teacher-chip" onclick="modal('Arthur Brooks',4)">Arthur Brooks</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">Suffering is an obstacle to remove</div><div class="camp-desc">Reducing unnecessary suffering is the entire point. Mindfulness is a tool for alleviating what doesn't serve you.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('James Low',4)">James Low</span><span class="teacher-chip" onclick="modal('John Astin',4)">John Astin</span><span class="teacher-chip" onclick="modal('Willoughby Britton',4)">Willoughby Britton</span><span class="teacher-chip" onclick="modal('Amishi Jha',4)">Amishi Jha</span><span class="teacher-chip" onclick="modal('Robert Sapolsky',4)">Robert Sapolsky</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">Suffering is something to see through</div><div class="camp-desc">Neither a teacher nor an obstacle. You stop being fooled by it. The problem isn't the suffering — it's the relationship to it.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Joan Tollifson',4)">Joan Tollifson</span><span class="teacher-chip" onclick="modal('Gangaji',4)">Gangaji</span><span class="teacher-chip" onclick="modal('Jim Newman',4)">Jim Newman</span></div></div>
+        <div class="camp"><div class="camp-body"><div class="camp-name">Suffering is a feedback signal</div><div class="camp-desc">Suffering is information about misalignment. It points toward what needs calibration, not transcendence.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Shinzen Young',4)">Shinzen Young</span></div></div>
+      </div>
+    </div>
+    <div class="corpus-note"><span class="note-link" onclick="modal('Sam Harris',4)">Sam Harris</span> does not clearly land in any camp here based on the available transcripts. His content primarily frames suffering as something mindfulness reduces, without theorizing its pedagogical value.</div>
+  </div>
+
+  <div class="bottom-nav">
+    <button class="nav-btn" id="prevBtn" onclick="go(-1)" disabled>← Previous</button>
+    <span class="nav-counter" id="counter">1 / 5</span>
+    <button class="nav-btn" id="nextBtn" onclick="go(1)">Next →</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal-sheet">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-debate-q" id="mDebateQ"></div>
+    <div class="modal-tradition" id="mTradition"></div>
+    <div class="modal-name" id="mName"></div>
+    <div id="mQuoteSection">
+      <div class="modal-section-label">From the transcript</div>
+      <blockquote class="modal-quote" id="mQuote"></blockquote>
+    </div>
+    <div class="modal-section-label">How this connects to the debate</div>
+    <div class="modal-synthesis" id="mSynthesis"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <span class="footer-label">Explore more:</span>
+    <a href="https://nickxma.github.io/meditation-quiz/">What kind of meditator are you?</a>
+    <a href="https://nickxma.github.io/meditation-debates/">The generic version</a>
+    <a href="https://nickxma.github.io/meditation-recommender/">What should I actually practice?</a>
+  </div>
+  <div class="footer-attr">This is an independent, AI-assisted educational project. It is not affiliated with, endorsed by, or connected to any teacher named here or their associated organizations. Teacher positions are interpretive summaries based on a limited corpus of transcripts and may not fully represent any individual's views. This is not professional advice.</div>
+</footer>
+
+<script>
+let current = 0;
+const total = 5;
+const DEBATES = [
+  "Does more practice lead to more benefit?",
+  "Can you dissolve the neurotic self without dissolving the motivated self?",
+  "Are you already awakened right now?",
+  "Is meditation always safe?",
+  "What is suffering actually for?"
+];
+
+const E = {
+"Sam Harris":{t:"Western-secular / non-dual",d:{
+0:{q:"The knowledge that this is always available and can\'t be improved... can unplug someone from any sense of urgency that would normally lead one to make practice a priority.",s:"Sam identifies a paradox in the non-dual framework itself: recognizing that awareness is already complete undermines the motivation to practice, creating a dosage problem in reverse."},
+1:{q:"There are many things that people achieve through a lot of dualistic struggle and aspiration that one could reasonably worry that one wouldn\'t have the impulse to get that good at that particular thing once one was no longer lost in thought continuously.",s:"Sam directly articulates the cherry-picking problem: ego-driven motivation may be inseparable from the neurotic self that meditation dissolves, and he openly worries this matters for areas where sustained ambition produces real achievement."},
+2:{q:"How do you know in this moment that you\'re not enlightened? There\'s actually nothing to find. There\'s no experiential answer to that question.",s:"Sam holds a nuanced position: in any moment of non-dual recognition, there is no evidence of non-enlightenment. Yet he qualifies this by admitting his wife would have a less flattering picture of his completion."},
+3:{q:"I am increasingly mindful of the possibility that there\'s some percentage of people for whom what is good and has been good for me and others... would just be a long list of contraindications.",s:"Sam acknowledges the safety question when pressed, but his engagement is reactive. He never raises adverse effects unprompted in his own teaching, and his framework has no dosage model or stopping criteria."},
+4:{q:"It\'s only when something begins to produce some suffering for me that a kind of mindfulness alarm goes off.",s:"Sam inadvertently reveals that suffering is the only thing that triggers his practice. Without it, awareness \'goes to sleep\' in pleasant experience \u2014 making suffering functionally indispensable even though the framework treats it as something to transcend."}}},
+"Adyashanti":{t:"Advaita-influenced / American Zen",d:{
+0:{q:"If you\'ve practiced for 50 years, you\'re at no better advantage to someone who may have walked in here for the very first time and they have not engaged in any spirituality.",s:"Adyashanti is explicitly anti-dosage: awakening does not accumulate through hours logged. The shift is instantaneous and egalitarian, available to the first-timer and the veteran equally."},
+1:{q:"We need something to orient us in life, but that orienting principle can actually operate and be empty. Then you just have the functional aspect of the ego without the identity aspect.",s:"Adyashanti proposes a functional ego stripped of identity \u2014 you keep the orienting mechanism but lose the self-referential suffering. This is the closest any teacher comes to a structural answer to the cherry-picking problem."},
+2:{q:"The great liberation is everywhere and always and already. It\'s already there.",s:"Adyashanti holds the \'already awakened\' position but with a caveat: it takes a shift in perception, not in reality, to recognize what is already the case."},
+4:{q:"If you get good at meditating, you can really get good at hiding from yourself. It\'s kind of one of the dangers of meditation, right?",s:"Adyashanti treats suffering as a teacher and warns that successful meditation can become avoidance \u2014 turning practice into a mechanism for bypassing the difficult truths that suffering reveals."}}},
+"Willoughby Britton":{t:"Western-secular / clinical",d:{
+0:{q:"That inverted U-shaped curve is a ubiquitous principle of both psychological and physiological processes.",s:"Britton frames the dose-response relationship as fundamentally non-monotonic: more practice does not always yield more benefit, and at some point you cross an optimum past which things degrade."},
+2:{q:"These are highly contested topics both within the religions and within science. They should really trust their own experience about what seems to be having benefit for them.",s:"Britton approaches awakening claims from a clinical rather than soteriological frame \u2014 she insists the question is empirical and individual, not doctrinal."},
+3:{q:"There are also people that are reporting that they\'ve lost all emotions altogether and they don\'t feel pleasure anymore... we shared a story about a woman who no longer felt affection for her children.",s:"Britton documents that meditation can produce genuine clinical harm \u2014 not discomfort, but loss of affect that directly impairs daily functioning and relationships."},
+4:{q:"All practices are beneficial for some people, some of the time. Of course, that\'s not very sexy and it probably doesn\'t sell apps very well.",s:"For Britton, suffering\'s role is clinical, not spiritual. Meditation is a tool to reduce suffering, and its value is entirely context-dependent."}}},
+"Henry Shukman":{t:"Zen (Rinzai/Soto) + Theravada jhana",d:{
+0:{q:"The place to begin is with what I call mindfulness... I kind of have this scheme that the first thing we need to do is get our mindfulness together.",s:"Shukman\'s four-zone model (mindfulness, soul work, flow, awakening) is itself a dosage framework \u2014 he insists you cannot skip zones, and going \'all in on awakening\' without the foundations leaves areas undeveloped."},
+2:{q:"Up until that point, I had not believed that I would ever go through a decisive change in practice... Something had been knocked out of me. That doesn\'t seem to have come back all these years on.",s:"Shukman describes awakening not as something already present but as a real irreversible shift \u2014 a cessation where \'everything had disappeared\' and afterward a root system of attachments had been removed."},
+3:{q:"There\'s also the danger of being so kind of, it\'s all boundless and open and empty, I can do what I like kind of thing. That\'s another hazard that Zazen calls Zazen sickness.",s:"Shukman acknowledges tradition-specific dangers: \'Zen sickness\' is where misapplied awakening insight becomes a license for harmful behavior, and jhana can become a blissful trap."},
+4:{q:"For the kinds of heartbreaks that we will all very probably meet sooner or later, what is the blessing that can be found through it?",s:"Shukman reframes suffering as a potential portal \u2014 heartbreak cracks open the \'frozen lake\' of ordinary experience and reveals a depth that intact surfaces never access."}}},
+"Joseph Goldstein":{t:"Theravada-Vipassana / integrating Dzogchen",d:{
+0:{q:"These great masters spent 30 years in a cave doing all kinds of practices in order to stabilize that experience of non-dual awareness, because of the recognition that yes, it\'s true that the mind being free is always there. However... the craving is going to arise.",s:"Goldstein argues dosage matters profoundly: even within traditions claiming the mind is already free, the greatest masters devoted decades of practice to stabilize that recognition."},
+2:{q:"You\'re recognizing that the nature of mind is already free, intrinsically free of craving. So if you\'re going to demur there, if you have a different view, that presents an obstacle to that experience.",s:"Goldstein acknowledges the mind is already free but insists that without cultivation and stabilization, that intrinsic freedom remains inaccessible \u2014 making the \'already awakened\' claim true but functionally incomplete."},
+3:{s:"Goldstein does not address meditation safety or adverse effects anywhere in the available transcript. This silence is notable given his extensive discussion of the progressive uprooting of defilements."}}},
+"Jim Newman":{t:"Radical non-duality / Tony Parsons lineage",d:{
+0:{q:"The illusory center can\'t practice to find the illusory nature of itself. All practice comes out of the experience that the illusory nature, the illusory experience is real.",s:"Newman flatly denies that practice leads to benefit \u2014 the very act of practicing reinforces the illusion of a separate self that needs to get somewhere."},
+1:{q:"The mental and emotional system can relax, become calmer. Because there\'s nobody, quite literally, nobody left that\'s engaged trying to find anything else. But it would be misleading to say that there\'s not uncomfortable thoughts or feelings that arise.",s:"Newman refuses to separate the neurotic self from the motivated self \u2014 ordinary functioning continues but without the ownership of the individual, though he won\'t frame this as a \'motivated self\' persisting."},
+3:{s:"Newman\'s framework makes the safety question irrelevant by construction: if there is no real individual who practices, there is no one who can be harmed by practice."},
+4:{q:"The sense of something missing is illusory, there is no way for knowing to ever be satisfied because it engenders in itself the need to know.",s:"For Newman, suffering has no purpose \u2014 it is part of the appearance, the illusory experience of a separate self seeking what it can never find."}}},
+"Charlotte Joko Beck":{t:"American Zen (Soto-influenced)",d:{
+0:{q:"I don\'t always get this. But sometimes I do, and we get it more often and more quickly the more years we practice.",s:"Beck directly endorses the dosage model: insight is not a one-time event but a capacity that deepens through years of sustained practice."},
+3:{q:"From my point of view, a concentration practice leads to mischief; I haven\'t seen it yet lead to anything else.",s:"Beck identifies concentration practice specifically as counterproductive \u2014 a rare case of a teacher flagging a practice modality as actively harmful rather than merely insufficient."},
+4:{q:"It can\'t be the silence, that peace and freedom, unless we have experienced what we call the misery of our life directly.",s:"Beck argues suffering must be directly contacted, not bypassed. Peace is only available on the other side of fully feeling one\'s pain."}}},
+"Peter Fenner":{t:"Tibetan Buddhist (Madhyamaka) / Radiant Mind",d:{
+0:{q:"I think the most common misunderstanding is that there needs to be a path that we aren\'t at what you could call the end of the path.",s:"Fenner frames the path itself as the core misunderstanding \u2014 the belief that more practice is needed prevents recognition of what is already here."},
+1:{q:"I don\'t feel that I\'m qualified to think about it in an authoritative way at all.",s:"When asked about the gap between realization and ethical behavior \u2014 the core of the cherry-picking question \u2014 Fenner declines to theorize, leaving the question genuinely unresolved."},
+2:{q:"This is always available and can\'t be improved, and there really is no knot to untie or if there is it unties itself.",s:"Fenner affirms the always-already position: recognition is available now and is unimprovable."},
+3:{q:"I don\'t feel qualified to judge other people. It\'s not clear to me where to look to find the authority to judge and assess others.",s:"When the conversation edges toward harm done by teachers, Fenner declines entirely to engage with the question of whether awakening practices can produce damage."}}},
+"Gangaji":{t:"Neo-Advaita / Papaji lineage",d:{
+0:{q:"Stop your practice, whatever practice you have.",s:"Gangaji channels Poonjaji\'s teaching that practice is itself the obstacle \u2014 the logic of accumulation through effort sustains the search and prevents recognition."},
+1:{q:"I do meditate daily \'cause my body and my mental state benefit from that, but I didn\'t need it to point me to what is true.",s:"Gangaji doesn\'t theorize about post-recognition motivation \u2014 she reports that functional practice continues out of practical benefit, without constructing a framework for how awakening relates to the motivated self."},
+2:{q:"Vigilance is necessary until your last breath. It\'s not like you just get it and then it\'s yours. You have to lose it. You have to lose it in the next breath so that it\'s not yours.",s:"Gangaji holds the yes-now position but adds that perpetual vigilance is required so recognition doesn\'t calcify into a possession."},
+3:{q:"For me, it went perfectly well with Papaji, and so maybe it\'s just an individual situation and I couldn\'t answer for anyone else.",s:"Rather than making universal safety claims, Gangaji frames the risks as radically individual \u2014 what worked for her has clearly produced harm in other cases."},
+4:{q:"The opportunity is to actually experience the anger rather than the mindstream\'s commentary about that anger.",s:"Gangaji reframes suffering as raw energy to be experienced directly \u2014 the problem is never the emotion itself but the layer of commentary we add."}}},
+"Loch Kelly":{t:"Dzogchen / Mahamudra / Neo-Advaita",d:{
+0:{q:"The reason that something like a pointing out or a glimpse works is because the awakeness doesn\'t need to be constructed or developed. It\'s naturally here already.",s:"Kelly holds that glimpses accumulate not through building something new but through repeated recognition \u2014 each micro-shift trains the system to access non-dual awareness more readily."},
+1:{q:"Once the awareness is aware of itself, it\'s moving, it\'s knowing, it\'s using your hand... it\'s almost like an inner dharma starts to show itself.",s:"Kelly describes motivation and action as arising spontaneously from awareness itself once the small-self manager steps aside. An \'inner dharma\' was always directing things."},
+2:{q:"It\'s always available no matter what was arising a second ago, and therefore it doesn\'t, in principle, require any build up or continuity of mindfulness.",s:"Kelly affirms the always-already position but adds that a pointing-out instruction is typically needed \u2014 awakeness is here now, but most people need someone to show them where to look."},
+3:{q:"When the ego defenses are dissolved... the unconscious in more of the deconstruction that Willoughby Britton discovered, it just allows repressed contents to flood the system.",s:"Kelly directly references Britton\'s research, framing the risk as real: deconstructing the self without simultaneously providing embodied ground can flood the system with repressed material."}}},
+"Stephan Bodian":{t:"Western non-dual (Advaita/Dzogchen, Zen background)",d:{
+0:{q:"I think there\'s actually more of a path once you wake up, because then, the path is, how do I embody that? How do I live from that?",s:"Bodian rejects accumulation as the mechanism but insists on a post-awakening practice of returning and stabilizing \u2014 the benefit comes from coming back more reliably after initial recognition."},
+1:{q:"Let yourself be a vehicle for life to live through you. Let go of the tight grip of fear and anxiety.",s:"For Bodian, dissolving the neurotic self does not mean paralysis \u2014 action continues, but it flows from life itself rather than from the anxious, controlling ego."},
+2:{q:"Awakened awareness is our natural state. There\'s no question. But, if you don\'t live from that, it\'s not gonna make any difference to your life.",s:"Bodian affirms the yes-now position but adds a critical caveat: intellectual acknowledgment without embodiment is worthless."},
+3:{q:"You can get the jargon, you can talk the talk, and you can have the impression that you\'re enlightened, and not be, at all.",s:"Bodian warns that the direct path creates a specific danger: false awakening. The ease of absorbing non-dual language lets people construct a hollow self-image of realization."}}},
+"Joan Tollifson":{t:"Post-Zen / Western non-dual (Toni Packer lineage)",d:{
+0:{q:"The more I\'m caught up in a goal, the more I\'m missing what\'s right here right now.",s:"Tollifson flatly rejects the dosage model \u2014 goal-orientation is actively obstructive, and the more you frame practice as accumulation, the more you miss what is already present."},
+1:{q:"The self, this me, isn\'t really there. There\'s no one authoring or thinking my thoughts, there\'s no one making my choices.",s:"Tollifson dissolves the cherry-picking question itself: if there is no author behind choices, then action arises choicelessly whether the sense of self is present or not."},
+3:{q:"One of the potential pitfalls in a sort of mindfulness approach is that it can play into that sense that there\'s me here.",s:"Tollifson identifies a structural danger: mindfulness can reinforce the illusion it aims to dissolve by installing a \'meditator\' identity that monitors experience."},
+4:{q:"What has fallen away is the idea that I\'m somehow gonna fix all that eventually or that\'s what I should be doing.",s:"Tollifson treats suffering as a two-layer phenomenon: raw experience versus the added narrative of the self who should fix it. The second layer is the optional suffering that falls away."}}},
+"Christopher Titmuss":{t:"Theravada / Advaita-informed / non-sectarian",d:{
+0:{q:"I regard the other view, \'There is no path, there is no goal, it\'s only now, you\'re already enlightened,\' as another problematic viewpoint, because the human being may hear that... but it doesn\'t actually mean there is anything deeply transformative taking place.",s:"Titmuss rejects both extremes: accumulation-based practice breeds self-measurement, but the \'no path\' message is equally problematic because hearing truth is not the same as being transformed by it."},
+2:{q:"I regard the view \'you\'re already enlightened\' as another problematic viewpoint.",s:"Titmuss directly names \'you\'re already enlightened\' as problematic \u2014 not because it is metaphysically false, but because it gives people a conceptual escape hatch that bypasses genuine transformation."},
+3:{q:"If one\'s going to have a guru, it\'s probably better that they\'re dead. That\'s my view. Because it\'s safer.",s:"Titmuss approaches safety through the lens of power and authority \u2014 living teachers create dependency, projection, and abuse dynamics that are endemic to contemplative communities."}}},
+"John Astin":{t:"Dzogchen-informed / nondual / Western-secular",d:{
+0:{q:"I basically came to the conclusion that either I was really bad at it, or, it just wasn\'t possible.",s:"Astin tried the accumulation model \u2014 sustaining awareness over longer periods \u2014 and concluded it was literally impossible. His resolution was recognizing that abiding was never something to achieve."},
+1:{q:"Doing battle with those things is the very thing that reinforced them.",s:"Astin argues that fighting the neurotic self strengthens it. Freedom comes from recognizing that identity and contraction were never solid to begin with."},
+2:{q:"It\'s been me. It\'s been my very own being of the beingness of life itself, and what was I doing just sort of racking my brain and practicing so hard to realize that?",s:"Astin\'s awakening was precisely the recognition that what he had been seeking was never absent \u2014 it was his own being all along."},
+3:{s:"Astin does not engage with meditation safety or adverse effects in the available transcripts."},
+4:{q:"The only reason to even point to that discovery really comes down to addressing suffering, addressing human suffering.",s:"Astin rejects the nihilistic non-dual position. Suffering is the whole point \u2014 the contraction signal that invites investigation into what lies beneath."}}},
+"Kodo Sawaki":{t:"Soto Zen",d:{
+0:{q:"Zazen has no results and nothing to gain; practice is itself satori.",s:"Sawaki holds that there are no stages and no accumulation \u2014 each moment of zazen is complete."},
+3:{s:"The only danger Sawaki discusses is the \'Zen devil\' \u2014 someone who takes pride in their satori."}}},
+"James Low":{t:"Dzogchen / Tibetan Buddhist",d:{
+0:{s:"Low holds that no accumulation toward a goal is possible, but sustained effort to relax into open awareness is required."},
+2:{s:"Open awareness is always already present, but the foreclosure created by ego-identification is real and must be seen through."},
+3:{s:"Low notes that anxious striving starts from the wrong position, but does not discuss adverse effects of formal practice."},
+4:{s:"Low frames suffering as arising from taking illusions as solid \u2014 the solution is to see through the reification that creates it."}}},
+"Diane Musho Hamilton":{t:"Zen + Integral Theory + Western psychology",d:{
+1:{s:"Hamilton argues that ethical and relational training must be in place for compassionate motivation to express itself skillfully after awakening."},
+3:{s:"Hamilton describes spiritual communities as structurally unable to handle conflict because meditation cultivates disidentification but not the relational skills needed to navigate harm."},
+4:{s:"Hamilton views conflict and suffering as possessing \'elegant intelligence\' that reveals what needs to change."}}},
+"Richard Lang":{t:"Headless Way (Douglas Harding tradition)",d:{
+0:{s:"Lang holds that seeing is the whole of it, immediately available. \'You can\'t do it wrong\' and \'there\'s no hierarchy of seers.\'"},
+2:{s:"One\'s true nature is always the open, headless space \u2014 the experiments simply make this obvious."}}},
+"Shinzen Young":{t:"Integrated Buddhist / Western-secular / systems science",d:{
+0:{s:"Young\'s entire Unified Mindfulness system is structured around systematic, lifelong training with different techniques at different phases."},
+1:{s:"Young frames post-insight motivation as continuous with pre-insight \u2014 cause-and-effect reasoning and behavioral integrity remain active."},
+2:{s:"Young distinguishes \'nirvana with a remnant\' from without. The \'you\'re already there\' framing is one legitimate way to think about practice, but not his preferred centerpiece."},
+3:{s:"Young acknowledges \'pathological enlightenment\' and extreme cases of people broken by practice. Comprehensive wellbeing requires looking at all edge cases."},
+4:{s:"Young frames uncomfortable experiences met with equanimity as causing less suffering and therefore motivating objective behaviors \u2014 suffering as calibration signal."}}},
+"Kieran Setiya":{t:"Western analytic philosophy / secular",d:{
+0:{s:"Setiya holds that mindfulness can genuinely reduce the power of suffering by breaking the spell of thought \u2014 a learnable skill that accumulates."},
+4:{s:"Setiya argues that grief and negative emotion are often integral to living well and should not be merely eliminated."}}},
+"Arthur Brooks":{t:"Western-secular / positive psychology",d:{
+0:{s:"Brooks treats practice as accumulative: the shift from fluid to crystallized intelligence is a developmentally staged journey."},
+1:{s:"Brooks does not frame any state as \'awakening\' \u2014 his model is about outgrowing ego-attachment to achievement."},
+4:{s:"Brooks views the suffering of decline as the catalyst that drives people toward wisdom \u2014 suffering as a signal that one is on the wrong curve."}}},
+"Oliver Burkeman":{t:"Western-secular / philosophical psychology",d:{
+0:{s:"Burkeman argues that planning to accumulate practice is often what prevents you from doing the thing. Doing it once today is the only real path."},
+3:{s:"Burkeman warns that overly systematic practice can breed avoidance and rigidity, but does not discuss meditation adverse effects."}}},
+"Donald Robertson":{t:"Stoicism / CBT-informed Western philosophy",d:{
+0:{s:"Robertson holds that Stoic practice requires ongoing daily effort \u2014 prosoche, journaling, and contemplative exercises are cumulative."},
+3:{s:"Robertson frames the therapeutic goal of freedom from irrational passion as wholly positive."},
+4:{s:"Robertson views hardship as the training ground for virtue \u2014 negative visualization deliberately courts imagined suffering as preparation."}}},
+"Robert Sapolsky":{t:"Determinism / neuroscience",d:{
+0:{s:"Sapolsky cannot coherently endorse a path because there is no agent to walk it. What looks like practice is just another causal process unfolding."},
+1:{s:"Sapolsky explicitly says he does not have a good solution to the motivation problem under determinism."},
+3:{s:"Sapolsky focuses entirely on the moral and behavioral implications of determinism rather than meditation safety."},
+4:{s:"Sapolsky frames suffering caused by retributive punishment and self-blame as something to be eliminated by correctly understanding causation."}}},
+"Amishi Jha":{t:"Western-secular / cognitive neuroscience",d:{
+0:{s:"Jha holds that repeated engagement in mindfulness practice changes brain networks in durable ways. Minutes-per-day makes a real difference."},
+3:{s:"Jha explicitly adjusts practice for high-anxiety or hypervigilant populations \u2014 endorses tailoring practice to the individual."},
+4:{s:"Jha frames rumination and catastrophizing as failures of the attention system to be trained against."}}},
+"Rick Hanson":{t:"Theravada-influenced / neuroscience-informed",d:{
+0:{s:"Hanson holds that practice leaves lasting neurological traces and that deliberate internalization of beneficial states is how traits are built from states."},
+1:{s:"Hanson\'s long-term orientation is toward cultivation of Brahmaviharas. After awakening, what remains is compassion and desire to care and share."},
+2:{s:"Hanson quotes Suzuki Roshi: \'I\'m not sure there are enlightened beings; I am sure there are enlightened moments.\' Endorses stringing more moments together."},
+3:{s:"Hanson acknowledges that some teachers he has known were \'fraught with difficulty\' and that guru-disciple relationships can lead to exploitation."},
+4:{s:"Hanson uses the negativity bias to explain why intentional cultivation is needed. His \'linking\' practice works with negative material as raw material for healing."}}}
+};
+
+function show(idx) {
+  document.querySelectorAll('.debate').forEach((d, i) => d.classList.toggle('active', i === idx));
+  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+  current = idx;
+  document.getElementById('prevBtn').disabled = idx === 0;
+  document.getElementById('nextBtn').disabled = idx === total - 1;
+  document.getElementById('counter').textContent = `${idx + 1} / ${total}`;
+}
+
+function go(dir) {
+  const next = current + dir;
+  if (next < 0 || next >= total) return;
+  show(next);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function modal(name, debate) {
+  const t = E[name];
+  if (!t) return;
+  document.getElementById('mDebateQ').textContent = DEBATES[debate];
+  document.getElementById('mTradition').textContent = t.t;
+  document.getElementById('mName').textContent = name;
+  const entry = t.d[debate];
+  if (entry && entry.q) {
+    document.getElementById('mQuoteSection').style.display = 'block';
+    document.getElementById('mQuote').textContent = entry.q;
+    document.getElementById('mSynthesis').textContent = entry.s;
+  } else if (entry) {
+    document.getElementById('mQuoteSection').style.display = 'none';
+    document.getElementById('mSynthesis').textContent = entry.s;
+  } else {
+    document.getElementById('mQuoteSection').style.display = 'none';
+    document.getElementById('mSynthesis').textContent = 'Position data not available for this debate.';
+  }
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+</script>
+</body>
+</html>
