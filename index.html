@@ -206,8 +206,8 @@ footer a:hover { text-decoration: underline; }
 
 <div class="tab-strip-wrap">
   <div class="tab-strip" id="tabs">
-    <button class="tab-btn active" onclick="show(0)">Does practice accumulate?</button>
-    <button class="tab-btn" onclick="show(1)">Can you cherry-pick?</button>
+    <button class="tab-btn active" onclick="show(1)">Can you cherry-pick?</button>
+    <button class="tab-btn" onclick="show(0)">Does practice accumulate?</button>
     <button class="tab-btn" onclick="show(2)">Already awakened?</button>
     <button class="tab-btn" onclick="show(3)">Is it always safe?</button>
     <button class="tab-btn" onclick="show(4)">What is suffering for?</button>
@@ -217,12 +217,12 @@ footer a:hover { text-decoration: underline; }
 <div class="main">
 
   <!-- D0: Dosage -->
-  <div class="debate active" id="d0">
+  <div class="debate" id="d0">
     <div class="debate-card">
       <div class="debate-num">Question 1 of 5</div>
       <div class="debate-q">Does more practice lead to more benefit?</div>
-      <div class="debate-framing">Every app, retreat center, and teacher incentive assumes the answer is yes. In the available sources, the teachers are roughly split: half say dosage matters, the other half say the premise is wrong.</div>
-      <div class="camps-label">Where the teachers divide</div>
+      <div class="debate-framing">Most meditation frameworks assume the answer is yes. In the available sources, the teachers are roughly split: half say dosage matters, the other half say the premise is wrong.</div>
+      <div class="camps-label">Where teachers differ</div>
       <div class="camps">
         <div class="camp"><div class="camp-body"><div class="camp-name">Yes — practice accumulates</div><div class="camp-desc">Real gains come from sustained effort. The skill deepens over time. Someone with decades of daily practice has a genuine advantage.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Charlotte Joko Beck',0)">Charlotte Joko Beck</span><span class="teacher-chip" onclick="modal('Henry Shukman',0)">Henry Shukman</span><span class="teacher-chip" onclick="modal('Joseph Goldstein',0)">Joseph Goldstein</span><span class="teacher-chip" onclick="modal('Donald Robertson',0)">Donald Robertson</span><span class="teacher-chip" onclick="modal('Amishi Jha',0)">Amishi Jha</span><span class="teacher-chip" onclick="modal('Rick Hanson',0)">Rick Hanson</span><span class="teacher-chip" onclick="modal('Arthur Brooks',0)">Arthur Brooks</span><span class="teacher-chip" onclick="modal('Shinzen Young',0)">Shinzen Young</span><span class="teacher-chip" onclick="modal('Kieran Setiya',0)">Kieran Setiya</span></div></div>
         <div class="camp"><div class="camp-body"><div class="camp-name">No — you can't improve what's already complete</div><div class="camp-desc">The thing you're looking for was never absent. A long-term practitioner has no fundamental advantage over someone encountering this for the first time.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Kodo Sawaki',0)">Kodo Sawaki</span><span class="teacher-chip" onclick="modal('Adyashanti',0)">Adyashanti</span><span class="teacher-chip" onclick="modal('Gangaji',0)">Gangaji</span><span class="teacher-chip" onclick="modal('Joan Tollifson',0)">Joan Tollifson</span><span class="teacher-chip" onclick="modal('Oliver Burkeman',0)">Oliver Burkeman</span><span class="teacher-chip" onclick="modal('Richard Lang',0)">Richard Lang</span><span class="teacher-chip" onclick="modal('John Astin',0)">John Astin</span></div></div>
@@ -234,12 +234,12 @@ footer a:hover { text-decoration: underline; }
   </div>
 
   <!-- D1: Cherry-pick -->
-  <div class="debate" id="d1">
+  <div class="debate active" id="d1">
     <div class="debate-card">
       <div class="debate-num">Question 2 of 5</div>
       <div class="debate-q">Can you dissolve the neurotic self without dissolving the motivated self?</div>
-      <div class="debate-framing">Mindfulness promises to reduce anxiety, reactivity, and ego-driven suffering. But the anxious self and the driven self may run on the same machinery. If you weaken one, do you weaken both? This is the question the corpus never resolves — and mostly avoids.</div>
-      <div class="camps-label">Where the teachers divide</div>
+      <div class="debate-framing">Mindfulness promises to reduce anxiety, reactivity, and ego-driven suffering. But the anxious self and the driven self may run on the same machinery. If you weaken one, do you weaken both? This is a question that few teachers address directly.</div>
+      <div class="camps-label">Where teachers differ</div>
       <div class="camps">
         <div class="camp"><div class="camp-body"><div class="camp-name">Yes — acceptance enables clearer action</div><div class="camp-desc">When reactivity dissolves, what remains is more effective, not less. Genuine motivation doesn't require anxiety to function. The claim: acceptance and ambition are compatible.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Diane Musho Hamilton',1)">Diane Musho Hamilton</span><span class="teacher-chip" onclick="modal('Rick Hanson',1)">Rick Hanson</span><span class="teacher-chip" onclick="modal('Loch Kelly',1)">Loch Kelly</span><span class="teacher-chip" onclick="modal('Stephan Bodian',1)">Stephan Bodian</span><span class="teacher-chip" onclick="modal('Shinzen Young',1)">Shinzen Young</span></div></div>
         <div class="camp"><div class="camp-body"><div class="camp-name">No — you can't cherry-pick</div><div class="camp-desc">The capacity for sustained effort, deferred gratification, and competitive ambition are all ego-driven. There is no surgical option for dissolving only the parts you don't like.</div></div><div class="absence-note">No teacher in the corpus directly states this position — which is the most significant finding. The argument that you can't cherry-pick is structurally present but never named.</div></div>
@@ -256,7 +256,7 @@ footer a:hover { text-decoration: underline; }
       <div class="debate-num">Question 3 of 5</div>
       <div class="debate-q">Are you already awakened right now?</div>
       <div class="debate-framing">One of the oldest debates in contemplative practice. In the available sources, teachers land on every side — including one who calls the "you're already there" teaching dangerous, and another whose own experience directly contradicts the "always already" position.</div>
-      <div class="camps-label">Where the teachers divide</div>
+      <div class="camps-label">Where teachers differ</div>
       <div class="camps">
         <div class="camp"><div class="camp-body"><div class="camp-name">Yes — right now, no practice needed</div><div class="camp-desc">Awareness is already present, complete, undamaged. Recognition is available immediately. The project of gradual practice may be misdirected effort toward something you already are.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Stephan Bodian',2)">Stephan Bodian</span><span class="teacher-chip" onclick="modal('Peter Fenner',2)">Peter Fenner</span><span class="teacher-chip" onclick="modal('Richard Lang',2)">Richard Lang</span><span class="teacher-chip" onclick="modal('John Astin',2)">John Astin</span><span class="teacher-chip" onclick="modal('Gangaji',2)">Gangaji</span></div></div>
         <div class="camp"><div class="camp-body"><div class="camp-name">Awareness is always present, but a real shift is still needed</div><div class="camp-desc">The underlying nature is always there, but recognition requires stabilization. There's a difference between a glimpse and a stable change.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Sam Harris',2)">Sam Harris</span><span class="teacher-chip" onclick="modal('Adyashanti',2)">Adyashanti</span><span class="teacher-chip" onclick="modal('James Low',2)">James Low</span><span class="teacher-chip" onclick="modal('Loch Kelly',2)">Loch Kelly</span><span class="teacher-chip" onclick="modal('Shinzen Young',2)">Shinzen Young</span><span class="teacher-chip" onclick="modal('Rick Hanson',2)">Rick Hanson</span><span class="teacher-chip" onclick="modal('Joseph Goldstein',2)">Joseph Goldstein</span></div></div>
@@ -273,7 +273,7 @@ footer a:hover { text-decoration: underline; }
       <div class="debate-num">Question 4 of 5</div>
       <div class="debate-q">Is meditation always safe?</div>
       <div class="debate-framing">The wellness industry treats this as obvious. Among these teachers, the split is stark: a handful acknowledge adverse effects explicitly in the available sources; the majority do not address it at all in the available content.</div>
-      <div class="camps-label">Where the teachers divide</div>
+      <div class="camps-label">Where teachers differ</div>
       <div class="camps">
         <div class="camp"><div class="camp-body"><div class="camp-name">Adverse effects are real and documented</div><div class="camp-desc">The empirical evidence for adverse effects is robust. Individual variation in response to different techniques is real, consistent, and underdisclosed.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Willoughby Britton',3)">Willoughby Britton</span><span class="teacher-chip" onclick="modal('Henry Shukman',3)">Henry Shukman</span><span class="teacher-chip" onclick="modal('Diane Musho Hamilton',3)">Diane Musho Hamilton</span><span class="teacher-chip" onclick="modal('Loch Kelly',3)">Loch Kelly</span><span class="teacher-chip" onclick="modal('Stephan Bodian',3)">Stephan Bodian</span><span class="teacher-chip" onclick="modal('Gangaji',3)">Gangaji</span><span class="teacher-chip" onclick="modal('Rick Hanson',3)">Rick Hanson</span></div></div>
         <div class="camp"><div class="camp-body"><div class="camp-name">Individual variation matters — one size doesn't fit all</div><div class="camp-desc">Different techniques work differently for different people. What's reliable for one practitioner can be actively unhelpful for another.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Willoughby Britton',3)">Willoughby Britton</span><span class="teacher-chip" onclick="modal('Shinzen Young',3)">Shinzen Young</span><span class="teacher-chip" onclick="modal('Amishi Jha',3)">Amishi Jha</span></div></div>
@@ -290,7 +290,7 @@ footer a:hover { text-decoration: underline; }
       <div class="debate-num">Question 5 of 5</div>
       <div class="debate-q">What is suffering actually for?</div>
       <div class="debate-framing">The corpus contains both therapeutic teachers (reduce suffering) and contemplative teachers (suffering is the teacher). These frameworks are in direct tension. Both claim to be what "mindfulness" is — but they point in opposite directions.</div>
-      <div class="camps-label">Where the teachers divide</div>
+      <div class="camps-label">Where teachers differ</div>
       <div class="camps">
         <div class="camp"><div class="camp-body"><div class="camp-name">Suffering is a necessary teacher — move toward it</div><div class="camp-desc">Suffering wakes you up. The instinct to avoid discomfort keeps you stuck. Moving toward it, not away, is how practice deepens.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('Adyashanti',4)">Adyashanti</span><span class="teacher-chip" onclick="modal('Charlotte Joko Beck',4)">Charlotte Joko Beck</span><span class="teacher-chip" onclick="modal('Henry Shukman',4)">Henry Shukman</span><span class="teacher-chip" onclick="modal('Diane Musho Hamilton',4)">Diane Musho Hamilton</span><span class="teacher-chip" onclick="modal('Rick Hanson',4)">Rick Hanson</span><span class="teacher-chip" onclick="modal('Donald Robertson',4)">Donald Robertson</span><span class="teacher-chip" onclick="modal('Kieran Setiya',4)">Kieran Setiya</span><span class="teacher-chip" onclick="modal('Arthur Brooks',4)">Arthur Brooks</span></div></div>
         <div class="camp"><div class="camp-body"><div class="camp-name">Suffering is an obstacle to remove</div><div class="camp-desc">Reducing unnecessary suffering is the entire point. Mindfulness is a tool for alleviating what doesn't serve you.</div></div><div class="camp-teachers"><span class="teacher-chip" onclick="modal('James Low',4)">James Low</span><span class="teacher-chip" onclick="modal('John Astin',4)">John Astin</span><span class="teacher-chip" onclick="modal('Willoughby Britton',4)">Willoughby Britton</span><span class="teacher-chip" onclick="modal('Amishi Jha',4)">Amishi Jha</span><span class="teacher-chip" onclick="modal('Robert Sapolsky',4)">Robert Sapolsky</span></div></div>
@@ -502,6 +502,7 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
+show(1);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 </script>
