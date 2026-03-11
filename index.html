@@ -30,6 +30,52 @@ body {
   flex-direction: column;
 }
 
+/* Top navbar */
+nav {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: 16px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.nav-brand {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+}
+
 header {
   text-align: center;
   padding: 52px 24px 20px;
@@ -198,6 +244,19 @@ footer a:hover { text-decoration: underline; }
 </head>
 <body>
 
+<nav>
+  <div class="nav-container">
+    <div class="nav-brand">Paradox of Acceptance</div>
+    <div class="nav-links">
+      <a href="https://nickxma.github.io/">Home</a>
+      <a href="https://nickxma.github.io/meditation-quiz/">Quiz</a>
+      <a href="https://nickxma.github.io/meditation-debates/">Debates</a>
+      <a href="https://nickxma.github.io/meditation-recommender/">Recommender</a>
+      <a href="https://nickxma.github.io/teacher-debates/" class="active">Teachers</a>
+    </div>
+  </div>
+</nav>
+
 <header>
   <div class="eyebrow">26 teachers · source corpus</div>
   <h1>Where Meditation Teachers Disagree</h1>
@@ -326,10 +385,11 @@ footer a:hover { text-decoration: underline; }
 
 <footer>
   <div class="footer-links">
-    <span class="footer-label">Explore more:</span>
-    <a href="https://nickxma.github.io/meditation-quiz/">What kind of meditator are you?</a>
-    <a href="https://nickxma.github.io/meditation-debates/">The generic version</a>
-    <a href="https://nickxma.github.io/meditation-recommender/">What should I actually practice?</a>
+    <span class="footer-label">Explore:</span>
+    <a href="https://nickxma.github.io/">Home</a>
+    <a href="https://nickxma.github.io/meditation-quiz/">Quiz</a>
+    <a href="https://nickxma.github.io/meditation-debates/">Debates</a>
+    <a href="https://nickxma.github.io/meditation-recommender/">Recommender</a>
   </div>
   <div class="footer-attr">This is an independent, AI-assisted educational project. It is not affiliated with, endorsed by, or connected to any teacher named here or their associated organizations. Teacher positions are interpretive summaries based on a limited corpus of source material and may not fully represent any individual's views. This is not professional advice.</div>
 </footer>
