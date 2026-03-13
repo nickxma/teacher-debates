@@ -247,12 +247,64 @@ h1 {
 .note-link:hover { text-decoration-color: var(--accent); }
 
 /* Footer */
-footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; }
-.footer-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 20px; font-size: 0.85rem; margin-bottom: 10px; }
-.footer-label { color: var(--text-muted); }
-footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
-footer a:hover { text-decoration: underline; }
-.footer-attr { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; max-width: 520px; margin: 0 auto; }
+.site-footer {
+  border-top: 1px solid var(--border, #e3e8ee);
+  padding: 48px 24px 40px;
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif);
+}
+.footer-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+}
+.footer-brand-link {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text, #0a2540);
+  text-decoration: none;
+}
+.footer-brand-link:hover { opacity: 0.7; }
+.footer-tagline {
+  font-size: 0.82rem;
+  color: var(--text-tertiary, #8898aa);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.footer-nav {
+  display: flex;
+  gap: 40px;
+}
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer-col h4 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary, #8898aa);
+  margin-bottom: 4px;
+}
+.footer-col a {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #425466);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-col a:hover {
+  color: var(--text, #0a2540);
+}
+@media (max-width: 600px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
 </style>
 </head>
 <body>
@@ -418,15 +470,30 @@ footer a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<footer>
-  <div class="footer-links">
-    <span class="footer-label">Explore more:</span>
-    <a href="https://paradoxofacceptance.xyz/meditation-recommender/">What should I practice?</a>
-    <a href="https://paradoxofacceptance.xyz/meditation-quiz/">What kind of meditator are you?</a>
-    <a href="https://paradoxofacceptance.xyz/meditation-debates/">5 debates no one can resolve</a>
-    <a href="https://paradoxofacceptance.xyz/waking-up-debates/">Debates from the Waking Up corpus</a>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <a href="https://paradoxofacceptance.xyz/paradox-of-acceptance/" class="footer-brand-link">Paradox of Acceptance</a>
+      <p class="footer-tagline">Making mindfulness more legible<br>without pretending it is simple.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <div class="footer-col">
+        <h4>Interactive</h4>
+        <a href="https://paradoxofacceptance.xyz/meditation-quiz/">Quiz</a>
+        <a href="https://paradoxofacceptance.xyz/meditation-recommender/">Recommender</a>
+        <a href="https://paradoxofacceptance.xyz/meditation-debates/">Debates</a>
+        <a href="https://paradoxofacceptance.xyz/teacher-debates/">Teacher Debates</a>
+        <a href="https://paradoxofacceptance.xyz/concept-explorer/">Concept Explorer</a>
+        <a href="https://paradoxofacceptance.xyz/mindfulness-fit/">Practice Fit</a>
+      </div>
+      <div class="footer-col">
+        <h4>Reading</h4>
+        <a href="https://paradoxofacceptance.xyz/mindfulness-essays/">Essays</a>
+        <a href="https://paradoxofacceptance.xyz/mindfulness-pointers/">Pointers</a>
+        <a href="https://paradoxofacceptance.xyz/mindfulness-wiki/">Wiki</a>
+      </div>
+    </nav>
   </div>
-  <div class="footer-attr">This is an independent, AI-assisted educational project. It is not affiliated with, endorsed by, or connected to any teacher named here or their associated organizations. Teacher positions are interpretive summaries based on their published work and may not fully represent any individual's views. This is not professional advice.</div>
 </footer>
 
 <script>
