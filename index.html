@@ -185,6 +185,19 @@ h1 {
   border-radius: 10px; padding: 14px 18px; font-size: 0.8rem; color: #5a4e00; line-height: 1.5;
 }
 
+.essay-link {
+  display: block; width: 100%; max-width: 640px; margin-top: 12px; padding: 14px 18px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  text-decoration: none; transition: border-color 0.15s, box-shadow 0.15s;
+}
+.essay-link:hover { border-color: var(--accent); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.essay-link-label {
+  display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 4px;
+}
+.essay-link-title { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+.essay-link-title::after { content: ' \2192'; }
+
 .bottom-nav { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 640px; margin-top: 20px; }
 .nav-btn {
   padding: 11px 24px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface);
@@ -292,6 +305,10 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
     <div class="corpus-note">Several teachers don't fit neatly into any camp on this question — their positions are nuanced or unresolved. Tap any name above to see their specific reasoning.</div>
+    <a class="essay-link" href="https://nickxma.github.io/mindfulness-essays/should-you-get-into-mindfulness.html">
+      <span class="essay-link-label">Companion essay</span>
+      <span class="essay-link-title">Should You Get Into Mindfulness?</span>
+    </a>
   </div>
 
   <!-- D1: Cherry-pick -->
@@ -309,6 +326,10 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
     <div class="corpus-note">This is the structural gap in the field. Across the available material, no teacher offers a mechanism for what motivates self-interested action after ego dissolution. The question is either avoided, asserted away, or acknowledged and left open.</div>
+    <a class="essay-link" href="https://nickxma.github.io/mindfulness-essays/cherry-picking-problem.html">
+      <span class="essay-link-label">Companion essay</span>
+      <span class="essay-link-title">The Cherry-Picking Problem</span>
+    </a>
   </div>
 
   <!-- D2: Awakened -->
@@ -326,6 +347,10 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
     <div class="corpus-note">In the available sources, <span class="note-link" onclick="modal('Henry Shukman',2)">Shukman</span> describes a cessation experience as evidence that awakening is a real, irreversible shift — which would undermine both the "always already there" camp and the "nowhere to get" camp.</div>
+    <a class="essay-link" href="https://nickxma.github.io/mindfulness-essays/losing-spiritual-urgency.html">
+      <span class="essay-link-label">Companion essay</span>
+      <span class="essay-link-title">Losing Spiritual Urgency</span>
+    </a>
   </div>
 
   <!-- D3: Safety -->
@@ -343,6 +368,10 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
     <div class="corpus-note">Most teachers do not discuss meditation safety at all. Only the teachers listed above engage with it explicitly. The asymmetry between coverage of benefits vs. harms is itself notable.</div>
+    <a class="essay-link" href="https://nickxma.github.io/mindfulness-essays/escape-hatch.html">
+      <span class="essay-link-label">Companion essay</span>
+      <span class="essay-link-title">The Escape Hatch</span>
+    </a>
   </div>
 
   <!-- D4: Suffering -->
@@ -360,6 +389,10 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
     <div class="corpus-note">Several teachers don't clearly land in any camp here — their work frames suffering primarily as something to reduce without theorizing its pedagogical value or its role as teacher.</div>
+    <a class="essay-link" href="https://nickxma.github.io/paradox-of-acceptance/">
+      <span class="essay-link-label">Companion essay</span>
+      <span class="essay-link-title">The Paradox of Acceptance</span>
+    </a>
   </div>
 
   <div class="bottom-nav">
