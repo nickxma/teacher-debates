@@ -31,49 +31,45 @@ body {
 }
 
 /* Top navbar */
-nav {
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
-  padding: 16px 20px;
+.poa-nav {
   position: sticky;
   top: 0;
   z-index: 100;
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  padding: 0 24px;
+  background: rgba(246, 249, 252, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border, #e3e8ee);
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif);
 }
-
-.nav-brand {
-  font-size: 0.75rem;
+.poa-nav-brand {
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.nav-links a {
-  font-size: 0.875rem;
-  color: var(--text-muted);
+  color: var(--text, #0a2540);
   text-decoration: none;
-  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.poa-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.poa-nav-links a {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #425466);
+  text-decoration: none;
   transition: color 0.15s;
 }
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--accent);
+.poa-nav-links a:hover {
+  color: var(--text, #0a2540);
+}
+.poa-nav-links a.active {
+  color: var(--text, #0a2540);
+  font-weight: 600;
 }
 
 header {
@@ -304,23 +300,25 @@ h1 {
     flex-direction: column;
     gap: 32px;
   }
+  .poa-nav { padding: 0 16px; height: 48px; }
+  .poa-nav-brand { font-size: 0.82rem; }
+  .poa-nav-links { gap: 16px; }
+  .poa-nav-links a { font-size: 0.78rem; }
 }
 </style>
+<link rel="icon" href="https://paradoxofacceptance.xyz/favicon/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://paradoxofacceptance.xyz/favicon/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="https://paradoxofacceptance.xyz/favicon/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="https://paradoxofacceptance.xyz/favicon/apple-touch-icon.png">
 </head>
 <body>
 
-<nav>
-  <div class="nav-container">
-    <div class="nav-brand">Paradox of Acceptance</div>
-    <div class="nav-links">
-      <a href="https://paradoxofacceptance.xyz/paradox-of-acceptance/">Home</a>
-      <a href="https://paradoxofacceptance.xyz/meditation-quiz/">Quiz</a>
-      <a href="https://paradoxofacceptance.xyz/meditation-debates/">Debates</a>
-      <a href="https://paradoxofacceptance.xyz/meditation-recommender/">Recommender</a>
-      <a href="https://paradoxofacceptance.xyz/teacher-debates/" class="active">Teachers</a>
-      <a href="https://paradoxofacceptance.xyz/concept-explorer/">Explorer</a>
-      <a href="https://paradoxofacceptance.xyz/mindfulness-fit/">Fit</a>
-    </div>
+<nav class="poa-nav">
+  <a href="https://paradoxofacceptance.xyz/paradox-of-acceptance/" class="poa-nav-brand">Paradox of Acceptance</a>
+  <div class="poa-nav-links">
+    <a href="https://paradoxofacceptance.xyz/paradox-of-acceptance/" class="active">Tools</a>
+    <a href="https://paradoxofacceptance.xyz/mindfulness-essays/">Essays</a>
+    <a href="https://paradoxofacceptance.xyz/mindfulness-wiki/">Wiki</a>
   </div>
 </nav>
 
